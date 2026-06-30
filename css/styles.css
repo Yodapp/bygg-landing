@@ -1,0 +1,296 @@
+/* ==========================================================================
+   Nordic Homes & Renovering — Landing Page Styles
+   Mobile-first, no framework, no build step.
+   ========================================================================== */
+
+:root {
+  --color-dark: #1c1c1c;
+  --color-charcoal: #2b2b2b;
+  --color-cream: #f6f4f0;
+  --color-accent: #7d9b96; /* muted sage/teal accent from the design */
+  --color-text: #222222;
+  --color-text-light: #6b6b6b;
+  --max-width: 1100px;
+  --space-sm: 1rem;
+  --space-md: 2rem;
+  --space-lg: 4rem;
+  --font-heading: "Helvetica Neue", Arial, sans-serif;
+  --font-body: "Helvetica Neue", Arial, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-body);
+  color: var(--color-text);
+  background: var(--color-cream);
+  line-height: 1.6;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+.container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 var(--space-sm);
+}
+
+h1, h2, h3 {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  line-height: 1.15;
+}
+
+/* ======= HEADER ======= */
+.site-header {
+  background: var(--color-dark);
+  color: #fff;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.logo {
+  color: #fff;
+  text-decoration: none;
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  line-height: 1.3;
+}
+
+.logo span {
+  font-weight: 400;
+  font-size: 0.8rem;
+  letter-spacing: 0.12em;
+}
+
+.main-nav {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.main-nav a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 0.85rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  opacity: 0.85;
+  transition: opacity 0.2s ease;
+}
+
+.main-nav a:hover {
+  opacity: 1;
+}
+
+/* ======= HERO ======= */
+.hero {
+  position: relative;
+  min-height: 70vh;
+  display: flex;
+  align-items: center;
+  background: var(--color-charcoal) url("/images/hero.jpg") center/cover no-repeat;
+  color: #fff;
+}
+
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(0,0,0,0.55), rgba(0,0,0,0.35));
+}
+
+.hero-content {
+  position: relative;
+  z-index: 1;
+  padding-top: var(--space-lg);
+  padding-bottom: var(--space-lg);
+}
+
+.hero h1 {
+  font-size: clamp(2.2rem, 7vw, 4rem);
+  margin-bottom: 1rem;
+}
+
+.hero-subtitle {
+  max-width: 36rem;
+  font-size: 1rem;
+  opacity: 0.9;
+}
+
+/* ======= SERVICES ======= */
+.services {
+  padding: var(--space-lg) 0;
+}
+
+.services h2 {
+  font-size: clamp(1.6rem, 4vw, 2.2rem);
+  text-align: center;
+  margin-bottom: var(--space-md);
+}
+
+.services-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-md);
+}
+
+@media (min-width: 600px) {
+  .services-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 900px) {
+  .services-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.service-card {
+  background: #fff;
+  padding: var(--space-md) var(--space-sm);
+  text-align: center;
+  border-radius: 4px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+
+.service-card h3 {
+  margin-bottom: 0.5rem;
+  color: var(--color-accent);
+}
+
+.service-card p {
+  font-size: 0.9rem;
+  color: var(--color-text-light);
+}
+
+/* ======= PORTFOLIO ======= */
+.portfolio {
+  padding: var(--space-lg) 0;
+  background: #fff;
+}
+
+.portfolio h2 {
+  font-size: clamp(1.6rem, 4vw, 2.2rem);
+  text-align: center;
+}
+
+.section-intro {
+  text-align: center;
+  color: var(--color-text-light);
+  max-width: 36rem;
+  margin: 0.75rem auto var(--space-md);
+}
+
+.portfolio-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-sm);
+}
+
+@media (min-width: 600px) {
+  .portfolio-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 900px) {
+  .portfolio-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.portfolio-item {
+  position: relative;
+  overflow: hidden;
+  border-radius: 4px;
+}
+
+.portfolio-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  aspect-ratio: 4 / 3;
+  transition: transform 0.3s ease;
+}
+
+.portfolio-item:hover img {
+  transform: scale(1.05);
+}
+
+.portfolio-item figcaption {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 0.5rem 0.75rem;
+  background: linear-gradient(0deg, rgba(0,0,0,0.6), transparent);
+  color: #fff;
+  font-size: 0.85rem;
+}
+
+/* ======= FOOTER / KONTAKT ======= */
+.site-footer {
+  background: var(--color-dark);
+  color: #fff;
+  padding: var(--space-lg) 0 var(--space-sm);
+}
+
+.footer-inner {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+@media (min-width: 700px) {
+  .footer-inner {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+}
+
+.footer-brand h3 {
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+}
+
+.footer-brand p,
+.footer-contact p {
+  font-size: 0.9rem;
+  opacity: 0.85;
+}
+
+.footer-contact p {
+  margin-bottom: 0.3rem;
+}
+
+.footer-bottom {
+  margin-top: var(--space-md);
+  padding-top: var(--space-sm);
+  border-top: 1px solid rgba(255,255,255,0.1);
+  font-size: 0.75rem;
+  opacity: 0.6;
+}
