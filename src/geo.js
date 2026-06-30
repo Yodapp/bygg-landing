@@ -15,8 +15,8 @@ export function resolveLocation(cf) {
   return cf.city || cf.region || cf.country || "Unknown";
 }
 
-export async function onRequestGet(context) {
-  const location = resolveLocation(context.request.cf);
+export async function handleGeo(request) {
+  const location = resolveLocation(request.cf);
 
   return new Response(JSON.stringify({ location }), {
     headers: { "Content-Type": "application/json" },

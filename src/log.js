@@ -7,19 +7,17 @@
  * Why this relay exists (instead of the browser calling Google directly):
  * Apps Script Web Apps log the caller's IP address. If the visitor's
  * browser called Google directly, their real IP would end up in our
- * analytics sheet. By routing the call through this Cloudflare Pages
- * Function, the *server-to-server* request to Google originates from
- * Cloudflare's edge — so only Cloudflare's IP ever reaches Google, and
- * the visitor's real IP never leaves Cloudflare's network at all.
+ * analytics sheet. By routing the call through this Worker, the
+ * *server-to-server* request to Google originates from Cloudflare's
+ * edge — so only Cloudflare's IP ever reaches Google, and the visitor's
+ * real IP never leaves Cloudflare's network at all.
  */
 
 import { resolveLocation } from "./geo.js";
 
 const ALLOWED_METRICS = ["page_view", "time_spent_30s", "scrolled_50_percent"];
 
-export async function onRequestPost(context) {
-  const { request, env } = context;
-
+export async function handleLog(request, env) {
   let body;
   try {
     body = await request.json();
@@ -69,7 +67,7 @@ export async function onRequestPost(context) {
     // Fail silently from the visitor's perspective — never block or slow
     // down their page experience because Google Sheets is unreachable.
     // The error is still logged here so it's visible in Cloudflare's
-    // Functions logs for debugging.
+    // Worker logs for debugging.
     console.error("Failed to relay engagement event to Google Sheets:", err);
     return new Response(JSON.stringify({ ok: false }), {
       status: 502,

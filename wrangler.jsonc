@@ -1,0 +1,10 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "bygg-landing",
+  "main": "src/index.js",
+  "compatibility_date": "2026-06-30",
+  "assets": {
+    "directory": "./public",
+    "binding": "ASSETS"
+  }
+}
