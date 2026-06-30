@@ -112,7 +112,7 @@ h1, h2, h3 {
   min-height: 70vh;
   display: flex;
   align-items: center;
-  background: var(--color-charcoal) url("/images/hero.jpg") center/cover no-repeat;
+  background: var(--color-charcoal) url("/images/image000007.jpeg") center/cover no-repeat;
   color: #fff;
 }
 
